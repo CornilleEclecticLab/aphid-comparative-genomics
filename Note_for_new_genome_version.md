@@ -1,24 +1,24 @@
-🧬 Aphid Chemosensory Gene Evolution: Data & Code Repository
+🧬 General Note on Genome Version Consistency for Gene Annotations
 
-This repository accompanies the manuscript titled:
-“Molecular evolution of olfactory and gustatory receptor genes and transposable elements in aphids”
-It contains all scripts, data, and resources used in the analysis of gene family evolution, synteny, and selection patterns across 13 aphid genomes.
+When working with gene annotations—especially for gene families such as olfactory (OR) and gustatory receptor (GR) genes—it is essential to ensure compatibility between the genome assembly version and the corresponding annotation files.
 
-⸻
+❗Why This Matters:
 
-📂 Availability of Data and Materials
+Inconsistencies between genome versions and annotations can lead to:
+	•	Internal stop codons or truncated CDS sequences
+	•	Scaffold name mismatches
+	•	Apparent frame shifts or stretches of ambiguous bases (Ns)
+	•	Misinterpretation of gene integrity
 
-🧬 Genome Assembly
-	•	The newly assembled genome of Dysaphis plantaginea is publicly available on the BIPAA platform.
+🔄 General Recommendation:
 
-🧬 Transposable Elements
-	•	Transposable element consensus sequences and annotations are available from RepetDB.
-	•	See Additional File 3: Table S27 for detailed URLs and accession numbers (https://www.biorxiv.org/content/10.1101/2025.04.14.648604v1).
+If gene annotations were generated on an earlier version of a genome and are to be used with a newer assembly:
+	•	Do not manually extract genes without checking genome version alignment
+	•	Use tools like Liftoff or Lifton to transfer annotations accurately between versions
+	•	Retain traceability by documenting the origin of annotations (version, tool, and source)
+	•	Check gene integrity after transfer (CDS length, presence of stop codons, etc.)
 
-🧬 Chemosensory Gene Annotations
-	•	Olfactory (OR) and Gustatory (GR) receptor CDS sequences and gene structure annotation files are available on Zenodo:
-📄 DOI: 10.5281/zenodo.12750441
-
-🧪 Code and Analysis Files
-	•	All analysis scripts and code are available in this repository.
-	•	The full workflow, including synteny network construction, TE analysis, and evolutionary rate estimation, is implemented in R and shell scripts.
+🧰 Suggested Tools:
+	•	Lifton: An improved version of Liftoff for robust annotation liftover
+	•	Liftoff: Widely used for annotation projection across assemblies
+	•	Custom scripts or pipelines to validate integrity after transfer
